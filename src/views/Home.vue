@@ -1,18 +1,44 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+	<ul>
+		<Catalog 
+			v-for="product in products"
+			:key="product.id"
+			:product="product"
+		/>
+	</ul>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import Catalog from '../components/Catalog'
+import { mapActions } from 'vuex'
 
 export default {
-  name: 'Home',
-  components: {
-    HelloWorld
-  }
+	name: 'Home',
+	components: {
+		Catalog
+	},
+	computed: {
+		products() {
+			return this.$store.state.products
+		},
+	},
+	methods: {
+		...mapActions([
+			'get_products_from_api'
+		])
+	},
+	 mounted() {
+        this.get_products_from_api()       
+    }
 }
 </script>
+
+<style lang="scss" scoped>
+
+ul {
+	display: flex;
+	flex-wrap: wrap;
+	overflow:hidden
+}
+
+</style>
