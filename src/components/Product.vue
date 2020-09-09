@@ -1,20 +1,20 @@
 <template>
-	<li class="container">
-		<h3> {{ product.name }}</h3>
-		<span>{{ product.abv }}</span>
-		<img :src="product.image_url" height="150">
-		<p>{{ product.tagline }}</p>
-	</li>
+<li>
+	<h3> {{ product.name }}</h3>
+	<span>{{ product.abv }}</span>
+	<img :src="product.image_url" height="150">
+	<p>{{ product.tagline }}</p>
+</li>
 </template>
 
 <script>
 export default {
-	name: 'Catalog',
+	name: 'Product',
 	props: ['product'],
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 li {
 	display: flex;
 	flex-direction: column;

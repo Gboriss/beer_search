@@ -1,8 +1,11 @@
 <template>
 	<div id="app">
 		<div id="nav">
-			<Search />
-			<router-link to="/">All</router-link> |
+			<Search 
+				@searchBeer="searchBeer"
+				:value="beers"
+			/>
+			<router-link to="/catalog">All</router-link> |
 			<router-link to="/about">About</router-link>
 		</div>
 		<router-view/>
@@ -12,11 +15,32 @@
 <script>
 import Search from '@/components/Search.vue'
 
+
 export default {
 	name: 'App',
 	components: {
 		Search,
-	},	
+	},
+	data: function () {
+  		return {
+			beers: [],
+  		}
+	},
+	methods: {
+		searchBeer() {
+			this.$http
+				.get('https://api.punkapi.com/v2/beers?beer_name=' + this.keyword)
+				.then(response => {
+					console.log(this.keyword) 
+					this.beers = response.data
+				})
+				.catch(error => {
+					 console.log(error)
+				})
+		
+		},
+	},
+	
 }
 </script>
 

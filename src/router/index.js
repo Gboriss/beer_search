@@ -6,11 +6,16 @@ Vue.use(VueRouter)
 
   const routes = [
   {
-    path: '/',
+    path: '/catalog',
     name: 'Home',
     component: Home,
     props: true
   },
+  // {
+  //   path: '/catalog/:sort',
+  //   name: 'Catalog',
+  //   component: Catalog
+  // },
   {
     path: '/about',
     name: 'About',

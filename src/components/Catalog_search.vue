@@ -1,11 +1,11 @@
 <template>
-<ul>
+
     <li class="content">
 		<div class="black_container">
 			<div class="punkt">
 				<div class="name">
-					<h1> Pilsen Lager</h1>
-					<h3>Unleash the Yeast Series.</h3>
+					<h1> {{ beer.name }}</h1>
+					<h3>{{ beer.tagline }}</h3>
 				</div>
 
 				<div class="list">
@@ -22,13 +22,14 @@
 			</div>
 		</div>
     </li>
-</ul>
+
   
 </template>
 
 <script>
 export default {
-    name: 'beer_list'
+    name: 'CatalogSearch',
+    props: ['beer']
 
 }
 </script>
@@ -100,6 +101,5 @@ export default {
 		}
 	}
 }
-
 
 </style>

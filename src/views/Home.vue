@@ -1,6 +1,6 @@
 <template>
 	<ul>
-		<Catalog 
+		<Product 
 			v-for="product in products"
 			:key="product.id"
 			:product="product"
@@ -9,13 +9,13 @@
 </template>
 
 <script>
-import Catalog from '../components/Catalog'
+import Product from '../components/Product'
 import { mapActions } from 'vuex'
 
 export default {
 	name: 'Home',
 	components: {
-		Catalog
+		Product
 	},
 	computed: {
 		products() {
@@ -38,7 +38,6 @@ export default {
 ul {
 	display: flex;
 	flex-wrap: wrap;
-	overflow:hidden
 }
 
 </style>
