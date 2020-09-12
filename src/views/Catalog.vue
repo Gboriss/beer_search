@@ -4,6 +4,7 @@
 			v-for="product in products"
 			:key="product.id"
 			:product="product"
+			@productClick="productClick"
 		/>
 	</ul>
 </template>
@@ -13,7 +14,7 @@ import Product from '../components/Product'
 import { mapActions } from 'vuex'
 
 export default {
-	name: 'Home',
+	name: 'Catalog',
 	components: {
 		Product
 	},
@@ -25,9 +26,12 @@ export default {
 	methods: {
 		...mapActions([
 			'get_products_from_api'
-		])
+		]),
+		productClick(name) {
+			this.$router.push({name: 'ProductPage' , query: {'beer': name}})
+		}
 	},
-	 mounted() {
+	mounted() {
         this.get_products_from_api()       
     }
 }

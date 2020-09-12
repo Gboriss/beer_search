@@ -1,14 +1,13 @@
 <template>
 	<div id="app">
 		<div id="nav">
-			<Search 
-				@searchBeer="searchBeer"
-				:value="beers"
-			/>
-			<router-link to="/catalog">All</router-link> |
+			<Search />
+			<router-link to="/">Catalog</router-link>
 			<router-link to="/about">About</router-link>
 		</div>
-		<router-view/>
+		<keep-alive>
+			<router-view/>
+		</keep-alive>
 	</div>
 </template>
 
@@ -21,26 +20,6 @@ export default {
 	components: {
 		Search,
 	},
-	data: function () {
-  		return {
-			beers: [],
-  		}
-	},
-	methods: {
-		searchBeer() {
-			this.$http
-				.get('https://api.punkapi.com/v2/beers?beer_name=' + this.keyword)
-				.then(response => {
-					console.log(this.keyword) 
-					this.beers = response.data
-				})
-				.catch(error => {
-					 console.log(error)
-				})
-		
-		},
-	},
-	
 }
 </script>
 
@@ -61,6 +40,7 @@ export default {
 	a {
 		font-weight: bold;
 		color: #2c3e50;
+		margin: 10px;
 
 		&.router-link-exact-active {
 			color: #f1f1f1;

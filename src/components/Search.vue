@@ -30,15 +30,13 @@ export default {
 	props: ['beers'],
 
 	methods: {
-		// searchBeer() {
-		// 	this.$emit('searchBeer', {keyword: this.keyword})
-        // },
 		searchBeer() {
 			this.$http
 				.get('https://api.punkapi.com/v2/beers?beer_name=' + this.keyword)
 				.then(response => {
 					console.log(response.data) 
 					this.$store.commit('set_products', response.data)
+					this.keyword = ''					
 				})
 				.catch(error => {
 					 console.log(error)

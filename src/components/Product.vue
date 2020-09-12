@@ -1,5 +1,5 @@
 <template>
-<li>
+<li @click="productClick">
 	<h3> {{ product.name }}</h3>
 	<span>{{ product.abv }}</span>
 	<img :src="product.image_url" height="150">
@@ -11,6 +11,12 @@
 export default {
 	name: 'Product',
 	props: ['product'],
+	methods: {
+        productClick() {
+           this.$emit('productClick', this.product.name)
+        }
+    }
+
 }
 </script>
 
