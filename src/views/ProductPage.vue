@@ -70,7 +70,7 @@ export default {
 
 	background-color: #050505;
 	width: 400px;
-	height: 500px;
+	max-height: 640px;
 	padding-left: 30px;
 	padding-top: 20px;
 
@@ -111,7 +111,8 @@ export default {
 			}
 
 		p {
-			width: 250px;
+			// width: 250px;
+			max-width: 270px;
 			border: 2px solid #FFFFFF;
 			margin: 20px;
 			padding: 10px;

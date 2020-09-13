@@ -1,8 +1,8 @@
 <template>
-<li @click="productClick">
+<li @click="productClick" v-tilt="{perspective: 700}">
 	<h3> {{ product.name }}</h3>
 	<span>{{ product.abv }}</span>
-	<img :src="product.image_url" height="150">
+	<img :src="product.image_url" height="150" v-tilt="{perspective: 1000}">
 	<p>{{ product.tagline }}</p>
 </li>
 </template>
@@ -21,6 +21,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 li {
 	display: flex;
 	flex-direction: column;
@@ -33,8 +34,9 @@ li {
 	border-radius: 50px;
 	margin: 20px;
 	// opacity: 0.3;
+	cursor: pointer;
 	
-	h2 {
+	h3 {
 		padding: 10px;
 	}
 
