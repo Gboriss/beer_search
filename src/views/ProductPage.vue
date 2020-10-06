@@ -15,7 +15,7 @@
         </div>
 
         <div class="description">
-            <img :src="product.image_url" height="250">
+            <img alt="big images beer" :src="product.image_url" height="250">
             <p>{{ product.description }}</p>
         </div>
     </div>
@@ -50,7 +50,7 @@ export default {
 	},
 	mounted() {
         this.get_products_from_api()       
-    }
+	}
 }
 </script>
 
@@ -65,8 +65,8 @@ export default {
 .black_container {
 	display: flex;
 	flex-direction: column;
-	justify-content: start;
-	align-items: start;
+	// justify-content: flex-start;
+	// align-items: flex-start;
 
 	background-color: #050505;
 	width: 400px;

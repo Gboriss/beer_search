@@ -2,8 +2,8 @@
 	<div id="app">
 		<div id="nav">
 			<Search />
-			<router-link to="/">Catalog</router-link>
-			<router-link to="/about">About</router-link>
+			<!-- <router-link to="/">Catalog</router-link>
+			<router-link to="/about">About</router-link> -->
 		</div>
 		<keep-alive>
 			<router-view/>
@@ -13,7 +13,6 @@
 
 <script>
 import Search from '@/components/Search.vue'
-
 
 export default {
 	name: 'App',
@@ -33,7 +32,7 @@ export default {
 	width: 100%;
 	margin: 100px auto;
 	text-align: center;
-	color: #2c3e50;
+	color: #ffffff;
 }
 
 #nav {

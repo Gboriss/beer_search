@@ -1,8 +1,8 @@
 <template>
-<li @click="productClick" v-tilt="{perspective: 700}">
+<li @click="productClick" v-tilt="{perspective: 1000}">
 	<h3> {{ product.name }}</h3>
 	<span>{{ product.abv }}</span>
-	<img :src="product.image_url" height="150" v-tilt="{perspective: 1000}">
+	<img alt="beer image" :src="product.image_url" height="150">
 	<p>{{ product.tagline }}</p>
 </li>
 </template>
