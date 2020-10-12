@@ -35,13 +35,14 @@ export default {
 			this.$http
 				.get('https://api.punkapi.com/v2/beers?beer_name=' + this.keyword)
 				.then(response => {
-					console.log(response.data) 
+					// console.log(response.data) 
 					this.$store.commit('set_products', response.data)
 					this.keyword = ''					
 				})
 				.catch(error => {
 					console.log(error)
 				})
+				this.$router.push('/catalog').catch(()=>{});
 		},
 	},
 }

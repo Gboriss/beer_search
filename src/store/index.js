@@ -8,16 +8,13 @@ export default new Vuex.Store({
 	state: {
 		products: [],
 		search: null,
-		beers: [],
-		// searchValue: ''
+		beers: []
 	},
 	mutations: {
 		set_products: (state, products) => {
 			state.products = products
 		},
-		// set_search_value: (state, value) => {
-		// 	state.searchValue = value
-		// }
+
 	},
 	actions: {
 		get_products_from_api({commit}) {
@@ -33,18 +30,11 @@ export default new Vuex.Store({
 				return error
 			})
 		}, 
-		// get_search_value({commit}, value) {
-		// 	commit('set_search_value', value)
-		// }
 	},
 	getters: {
 		products(state) {
 			return state.products
 		},
-		// search_Value(state) {
-		// 	return state.searchValue
-		// }
-
 	},
 	modules: {
 	}

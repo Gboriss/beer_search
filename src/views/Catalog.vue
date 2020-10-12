@@ -36,7 +36,7 @@
 			@productClick="productClick"
 		/>
 	</ul>
-	<section v-if="!products.length">
+	<section v-if="!fproducts.length">
 		<h2>Nothing found</h2>
 		<img alt="alcohol" src="../assets/images/alcohol.svg" width="200px">
 	</section>
@@ -59,29 +59,22 @@ export default {
         return {
 			sortedProducts: [],
 			minAbv: 0,
-            maxAbv: 60
+            maxAbv: 20
         }
     },
 	computed: {
 		products() {
 			return this.$store.state.products
 		},
-		fproducts() {
-            // if (this.sortedProducts.length) {
-            //     return this.sortedProducts
-            // } else {
-			// 	return this.products
-			// }
-			
+		fproducts() {	
 			let vm = this
-				this.sortedProducts = [...this.products]
-				return	this.sortedProducts = this.sortedProducts.filter(function (item) {
-					return item.abv >= vm.minAbv && item.abv <= vm.maxAbv
+			this.sortedProducts = [...this.products]
+			return	this.sortedProducts = this.sortedProducts.filter(function (item) {
+				return item.abv >= vm.minAbv && item.abv <= vm.maxAbv
 			})
+				return vm.minAbv = 0, vm.maxAbv = 20
 		},
-		// ...mapGetters([
-		// 	'search_Value'
-		// ])  
+
 	},
 	methods: {
 		...mapActions([
@@ -97,48 +90,13 @@ export default {
                 this.maxAbv = this.minAbv
                 this.minAbv = temp
             }
-            this.sortByCategories()
         },
-
-		sortByCategories() {
-            let vm = this
-			this.sortedProducts = [...this.products]
-            this.sortedProducts = this.sortedProducts.filter(function (item) {
-					return item.abv >= vm.minAbv && item.abv <= vm.maxAbv
-				})
-	
-			// if (category) {
-			// 	this.sortedProducts = this.sortedProducts.filter(function (e) {
-			// 		vm.sortedProducts === category.name
-            //         return e.category === category.name
-			// 	})
-			// }
-		},
-		// sortProductsBySearchValue() {
-		// 	this.sortedProducts = [...this.products]
-
-		// 	if (value) {
-		// 		this.sortedProducts = this.sortedProducts.filter(function (item) {
-		// 			return item.name.toLowerCase().includes(value.toLowerCase())
-		// 		})
-		// 	} else {
-		// 		this.sortedProducts = this.products
-
-		// 	}
-		// }
-	},
-	watch: {
-		// search_Value() {
-		// 	this.sortProductsBySearchValue(this.search_Value)
-		// }
 	},
 	mounted() {
         this.get_products_from_api()
 			.then((response) => {
 				if (response.data) {
-					console.log('dara.arrived')
-					this.sortByCategories()
-					// this.sortProductsBySearchValue()
+					// console.log('dara.arrived')
 				}
 			})    
     }
