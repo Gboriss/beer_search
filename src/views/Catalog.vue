@@ -1,33 +1,32 @@
 <template>
 <div>
-	<div class="range-slider">
-		<input 
-			type="range" 
-			min="0" max="20" 
-			step="1"
-			v-model.number="minAbv"
-			@change="setRanges"
-			
-		>
-		<input 
-			type="range" 
-			min="0" 
-			max="20" 
-			step="1"
-			v-model.number="maxAbv"
-			@change="setRanges"
-		>
-		<div class="range-values">
-			<p>Min alc {{minAbv}} %</p>
-			<p>Max alc {{maxAbv}} %</p>
+	<main>
+		<div class="range-slider">
+			<input 
+				type="range" 
+				min="0" max="20" 
+				step="1"
+				v-model.number="minAbv"
+				@change="setRanges"
+				
+			>
+			<input 
+				type="range" 
+				min="0" 
+				max="20" 
+				step="1"
+				v-model.number="maxAbv"
+				@change="setRanges"
+			>
+			<div class="range-values">
+				<p>Min alc {{minAbv}} %</p>
+				<p>Max alc {{maxAbv}} %</p>
 
+			</div>
 		</div>
-	</div>
-	<!-- <Slider 
-		:products="products"
-		@sortByCategories="sortByCategories"
+		<uiSwitch />
+	</main>
 
-	/> -->
 	<ul v-if=" fproducts.length">
 		<Product 
 			v-for="product in fproducts"
@@ -45,7 +44,7 @@
 
 <script>
 import Product from '../components/Product'
-// import Slider from '../components/Slider.vue'
+import uiSwitch from '../components/Switch'
 
 import { mapActions, mapGetters } from 'vuex'
 
@@ -53,7 +52,7 @@ export default {
 	name: 'Catalog',
 	components: {
 		Product,
-		// Slider
+		uiSwitch
 	},
 	data() {
         return {
@@ -72,7 +71,6 @@ export default {
 			return	this.sortedProducts = this.sortedProducts.filter(function (item) {
 				return item.abv >= vm.minAbv && item.abv <= vm.maxAbv
 			})
-				return vm.minAbv = 0, vm.maxAbv = 20
 		},
 
 	},
@@ -104,6 +102,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+main {
+	display: flex;
+	justify-content: space-between;
+}
 
 ul {
 	display: flex;
@@ -121,6 +123,14 @@ h2 {
 
 .range-values {
     margin-left: 25px;
+	align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+	p {
+		margin: 0;
+		padding-bottom: 10px;
+		
+	}
 }
 .range-slider {
     display: flex;
@@ -138,7 +148,8 @@ h2 {
     position: absolute;
     width: 250px;
     left: 0;
-    bottom: 85px;
+    bottom: 70px;
+	cursor: pointer;
 
 }
 ::-webkit-slider-thumb {

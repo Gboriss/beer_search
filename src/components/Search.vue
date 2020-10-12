@@ -8,6 +8,8 @@
 			type="text"
 			aria-label="Search"
 			autocomplete="off"
+			placeholder="search beer"
+			:maxlength="max"
 			v-model="keyword" 
 		/>
 		<button name="search">
@@ -24,6 +26,7 @@ export default {
 	name: 'Search',
 	data: function () {
   		return {
+			max: 20,
 			keyword: '',
   		}
 	},
@@ -42,7 +45,7 @@ export default {
 				.catch(error => {
 					console.log(error)
 				})
-				this.$router.push('/catalog').catch(()=>{});
+				this.$router.push('/catalog').catch(()=>{})
 		},
 	},
 }
