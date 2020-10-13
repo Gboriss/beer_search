@@ -24,7 +24,6 @@
 
 			</div>
 		</div>
-		<uiSwitch />
 	</main>
 
 	<ul v-if=" fproducts.length">
@@ -44,15 +43,12 @@
 
 <script>
 import Product from '../components/Product'
-import uiSwitch from '../components/Switch'
-
 import { mapActions, mapGetters } from 'vuex'
 
 export default {
 	name: 'Catalog',
 	components: {
 		Product,
-		uiSwitch
 	},
 	data() {
         return {
