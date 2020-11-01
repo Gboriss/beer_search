@@ -25,8 +25,15 @@
 			</div>
 		</div>
 	</main>
+	<section v-if="loading">
+		<h2>loading...</h2>
+	</section>
+	<!-- <section v-if="!fproducts.length">
+		<h2>Nothing found</h2>
+		<img alt="alcohol" src="../assets/images/alcohol.svg" width="200px">
+	</section> -->
 
-	<ul v-if=" fproducts.length">
+	<ul v-if="!loading">
 		<Product 
 			v-for="product in fproducts"
 			:key="product.id"
@@ -34,16 +41,12 @@
 			@productClick="productClick"
 		/>
 	</ul>
-	<section v-if="!fproducts.length">
-		<h2>Nothing found</h2>
-		<img alt="alcohol" src="../assets/images/alcohol.svg" width="200px">
-	</section>
 </div>
 </template>
 
 <script>
 import Product from '../components/Product'
-import { mapActions, mapGetters } from 'vuex'
+import { mapActions, mapGetters, mapState } from 'vuex'
 
 export default {
 	name: 'Catalog',
@@ -61,6 +64,9 @@ export default {
 		products() {
 			return this.$store.state.products
 		},
+		...mapState([
+			'loading'
+		]),
 		fproducts() {	
 			let vm = this
 			this.sortedProducts = [...this.products]
@@ -84,16 +90,19 @@ export default {
                 this.maxAbv = this.minAbv
                 this.minAbv = temp
             }
-        },
+		},
 	},
 	mounted() {
-        this.get_products_from_api()
+		this.get_products_from_api()
 			.then((response) => {
 				if (response.data) {
 					// console.log('dara.arrived')
 				}
 			})    
-    }
+	},
+	// created() {
+    // 	this.$store.dispatch('get_products_from_api') // dispatch loading
+  	// }
 }
 </script>
 

@@ -8,7 +8,7 @@
 			type="text"
 			aria-label="Search"
 			autocomplete="off"
-			placeholder="search beer"
+			placeholder="search"
 			:maxlength="max"
 			v-model="keyword" 
 		/>
@@ -35,11 +35,13 @@ export default {
 			'get_search_value'
 		]),
 		searchBeer() {
+
 			this.$http
 				.get('https://api.punkapi.com/v2/beers?beer_name=' + this.keyword)
 				.then(response => {
 					// console.log(response.data) 
 					this.$store.commit('set_products', response.data)
+					// this.$store.commit('changeLoadingState', false)
 					this.keyword = ''					
 				})
 				.catch(error => {
@@ -71,7 +73,7 @@ input {
 	font-size: 30px;
 	line-height: 1.4em;
 	color: #1C1C1C;
-	padding: 16px 70px 16px 60px;
+	padding: 13px 70px 16px 24px;
 	background-color: #F1F1F1;
 	box-shadow: inset 0 -2px 1px rgba(0,0,0,0.03);
 	box-sizing: border-box;
@@ -81,7 +83,7 @@ button {
 	flex-shrink: 0;
 	position: absolute;
 	right: 45px;
-	top: 35px;
+	top: 38px;
 	width: 40px;
 	height: 50px;
 	user-select: none;

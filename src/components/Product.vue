@@ -25,7 +25,6 @@ export default {
 li {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
 	align-items: center;
 
 	background-color: #050505;
@@ -33,11 +32,10 @@ li {
 	height: 380px;
 	border-radius: 50px;
 	margin: 20px;
-	// opacity: 0.3;
 	cursor: pointer;
 	
 	h3 {
-		padding: 10px;
+		padding: 30px 15px 0;
 	}
 
 	span {

@@ -1,6 +1,7 @@
 <template>
 <section class="content">
-    <div class="black_container">
+	<div v-if="Object.keys(product).length === 0">No results</div>
+    <div v-else class="black_container">
         <div class="punkt">
             <div class="name">
                 <h1> {{ product.name}}</h1>
@@ -65,20 +66,17 @@ export default {
 .black_container {
 	display: flex;
 	flex-direction: column;
-	// justify-content: flex-start;
-	// align-items: flex-start;
-
 	background-color: #050505;
 	width: 400px;
-	max-height: 640px;
-	padding-left: 30px;
+	// max-height: 640px;
+	// padding-left: 30px;
 	padding-top: 20px;
 
 	border-radius: 50px;
 	margin: 20px;
 
 	.punkt {
-		display: flex;
+		// display: flex;
 	}
 	
 	h1, h3 {
@@ -92,7 +90,7 @@ export default {
 		margin: 20px;
 
 		p {
-			border: 2px solid #FFFFFF;
+			// border: 2px solid #FFFFFF;
 			color: #FFFFFF;
 			margin: 0;
 			border-radius: 2px;
@@ -105,6 +103,7 @@ export default {
 			display: flex;
 			justify-content: center;
 			align-items: center;
+			overflow: auto;
 
 			img {
 				margin: 20px;
@@ -114,8 +113,8 @@ export default {
 			// width: 250px;
 			max-width: 270px;
 			border: 2px solid #FFFFFF;
-			margin: 20px;
-			padding: 10px;
+			margin: 15px 6px;
+			padding: 5px 1px;
 			box-sizing: border-box;
 			border-radius: 22px;
 			color: #FFFFFF;

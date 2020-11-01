@@ -8,13 +8,16 @@ export default new Vuex.Store({
 	state: {
 		products: [],
 		search: null,
-		beers: []
+		beers: [],
+		loading: true
 	},
 	mutations: {
 		set_products: (state, products) => {
 			state.products = products
 		},
-
+		changeLoadingState: (state, loading) => {
+			state.loading = loading
+		  }
 	},
 	actions: {
 		get_products_from_api({commit}) {
@@ -23,7 +26,8 @@ export default new Vuex.Store({
 			})
 			.then((products) => {
 				commit('set_products', products.data)
-			return products
+				commit('changeLoadingState', false)
+				return products
 			})
 			.catch((error) => {
 				console.log(error)
