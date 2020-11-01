@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.bb2de46dba08a896160e9513c2613c68.js"
+  "/beer_search/precache-manifest.bdda16061ee8f569b028036135244baf.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "beer_search"});
